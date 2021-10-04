@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "725537068741",
+    "project_id": "ungfireextinguisher",
+    "storage_bucket": "ungfireextinguisher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725537068741:android:148580e422ffc6fb8742ac",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.ungfireextin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725537068741-hdbd03n97kjj4im5apqmqi0rkqiq9hhm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmkeWeUIUm9MOY8ZOgm8-Mwic_un49EKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725537068741-hdbd03n97kjj4im5apqmqi0rkqiq9hhm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
