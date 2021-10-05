@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ungfireextin/models/extinguisher_model.dart';
+import 'package:ungfireextin/states/show_detail.dart';
 import 'package:ungfireextin/utility/my_constant.dart';
 import 'package:ungfireextin/widgets/show_network_image.dart';
 import 'package:ungfireextin/widgets/show_progress.dart';
@@ -61,11 +62,13 @@ class _MainHomeState extends State<MainHome> {
           ),
         ),
         body: LayoutBuilder(
-          builder: (context, constraints) => Column(
-            children: [
-              fieldSearch(constraints),
-              load ? const ShowProgress() : buildListView(),
-            ],
+          builder: (context, constraints) => SingleChildScrollView(
+            child: Column(
+              children: [
+                fieldSearch(constraints),
+                load ? const ShowProgress() : buildListView(),
+              ],
+            ),
           ),
         ));
   }
@@ -101,33 +104,45 @@ class _MainHomeState extends State<MainHome> {
         shrinkWrap: true,
         physics: const ScrollPhysics(),
         itemCount: extinguisherModels.length,
-        itemBuilder: (context, index) => Card(
-          child: Row(
-            children: [
-              Container(
-                width: constraints.maxWidth * 0.35,
-                height: constraints.maxWidth * 0.35,
-                child:
-                    ShowNetWorkImage(urlImage: extinguisherModels[index].image),
-              ),
-              Container(
-                width: constraints.maxWidth * 0.65 - 8,
-                height: constraints.maxWidth * 0.35,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ShowTitle(
-                      title: extinguisherModels[index].name,
-                      textStyle: MyConstant().h2Style(),
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  ShowDetail(extinguisherModel: extinguisherModels[index]),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Row(
+                children: [
+                  Container(
+                    width: constraints.maxWidth * 0.35,
+                    height: constraints.maxWidth * 0.35,
+                    child: ShowNetWorkImage(
+                        urlImage: extinguisherModels[index].image),
+                  ),
+                  Container(
+                    width: constraints.maxWidth * 0.65 - 24,
+                    height: constraints.maxWidth * 0.35,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ShowTitle(
+                          title: extinguisherModels[index].name,
+                          textStyle: MyConstant().h2Style(),
+                        ),
+                        ShowTitle(
+                          title: extinguisherModels[index].location,
+                          textStyle: MyConstant().h3Style(),
+                        ),
+                      ],
                     ),
-                    ShowTitle(
-                      title: extinguisherModels[index].location,
-                      textStyle: MyConstant().h3Style(),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

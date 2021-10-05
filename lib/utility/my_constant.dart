@@ -7,6 +7,7 @@ class MyConstant {
   static String routAuthen = '/authen';
   static String routAdminService = '/adminService';
   static String routOfficerService = '/officerService';
+  static String routAddExtin = '/addExtin';
 
   static String appName = 'Ung Fire Extinguisher';
 
